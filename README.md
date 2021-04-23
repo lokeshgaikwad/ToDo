@@ -2,4 +2,4 @@
 
 A ToDO App made using Flask and SQLAlchemy
 
-[Click Here](www.todo-lava.herokuapp.com)
+[Click Here](https://todo-lava.herokuapp.com/)
