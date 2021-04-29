@@ -30,7 +30,7 @@ def hello_world():
   print(allTodo)
   return render_template('index.html', allTodo=allTodo)
 
-@app.route('/update/<int:sno>')
+@app.route('/update/<int:sno>', methods=['GET', 'POST'])
 def update(sno):
   if request.method == 'POST':
     title = request.form['title']
@@ -40,6 +40,7 @@ def update(sno):
     todo.desc = desc
     db.session.add(todo)
     db.session.commit()
+    return redirect("/")
 
   todo = Todo.query.filter_by(sno=sno).first()
   return render_template('update.html', todo=todo)
@@ -51,6 +52,10 @@ def delete(sno):
   db.session.delete(todo)
   db.session.commit()
   return redirect("/")
+
+@app.route('/about')
+def about():
+  return render_template('about.html')
 
 
 if __name__ == "__main__":
